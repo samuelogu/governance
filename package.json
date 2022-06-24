@@ -1,5 +1,12 @@
 {
   "name": "hardhat-project",
+  "scripts": {
+    "compile": "npx hardhat compile",
+    "deploy-token": "npx hardhat run scripts/token-deploy.js --network rinkeby",
+    "deploy-governor": "npx hardhat run scripts/governor-deploy.js --network rinkeby",
+    "verify-token": "npx hardhat verify --network rinkeby --constructor-args arguments.js 0xa46b3dF287a990754808E81140369BfaD0ADe830",
+    "verify-governor": "npx hardhat verify --network rinkeby --constructor-args arguments.js 0xa46b3dF287a990754808E81140369BfaD0ADe830"
+  },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.6",
     "@nomiclabs/hardhat-waffle": "^2.0.3",
