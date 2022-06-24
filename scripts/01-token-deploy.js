@@ -3,12 +3,12 @@ const hre = require("hardhat");
 async function main() {
 
   // We get the contract to deploy
-  const Token = await hre.ethers.getContractFactory("MyToken");
+  const Token = await hre.ethers.getContractFactory("KobboToken");
   const token = await Token.deploy();
 
   await token.deployed();
 
-  console.log("Token contract deployed to:", token.address);
+  console.log("Kobbo Token contract deployed to:", token.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
