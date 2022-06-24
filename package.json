@@ -1,11 +1,17 @@
 {
   "name": "hardhat-project",
+  "config": {
+    "network": "rinkeby"
+  },
   "scripts": {
     "compile": "npx hardhat compile",
-    "deploy-token": "npx hardhat run scripts/token-deploy.js --network rinkeby",
-    "deploy-governor": "npx hardhat run scripts/governor-deploy.js --network rinkeby",
-    "verify-token": "npx hardhat verify --network rinkeby --constructor-args arguments.js 0xa46b3dF287a990754808E81140369BfaD0ADe830",
-    "verify-governor": "npx hardhat verify --network rinkeby --constructor-args arguments.js 0xa46b3dF287a990754808E81140369BfaD0ADe830"
+    "deploy-token": "npx hardhat run scripts/01-token-deploy.js --network $npm_package_config_network",
+    "timelock-deploy": "npx hardhat run scripts/02-time-lock-deploy.js --network $npm_package_config_network",
+    "deploy-governor": "npx hardhat run scripts/03-governor-deploy.js --network $npm_package_config_network",
+    "governance-roles-setup-deploy": "npx hardhat run scripts/04-setup-governance-contracts.js --network $npm_package_config_network",
+    "verify-token-contract": "npx hardhat verify --network rinkeby 0xfF64e098f3b09ACb19356dF2ecC3DCFF75E4B40B",
+    "verify-governor-contract": "npx hardhat verify --network $npm_package_config_network --constructor-args arguments/governor.js 0xecf61F2EEb4190b234F7cb9F8346a8AF7552d490",
+    "timelock-verify-contract": "npx hardhat verify --contract contracts/TimeLock.sol:TimeLock --network $npm_package_config_network --constructor-args arguments/timelock.js 0x2020a989d2D55A788CE036aFED2bd639Ec5BC5ab"
   },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.6",

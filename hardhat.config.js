@@ -1,4 +1,5 @@
 require("@nomiclabs/hardhat-etherscan");
+require("@nomiclabs/hardhat-waffle");
 
 require('dotenv').config()
 const privateKey = process.env.privateKey;
@@ -28,7 +29,7 @@ module.exports = {
     apiKey: etherscanApiKey
   },
   solidity: {
-    version: "0.8.0",
+    version: "0.8.4",
     settings: {
       optimizer: {
         enabled: true,
