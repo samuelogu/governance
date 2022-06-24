@@ -23,7 +23,7 @@ module.exports = {
     mainnet: {
       url: `https://mainnet.infura.io/v3/${infuraKey}`,
       accounts: [privateKey]
-    },
+    }
   },
   etherscan: {
     apiKey: etherscanApiKey
