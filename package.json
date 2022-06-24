@@ -9,8 +9,8 @@
     "timelock-deploy": "npx hardhat run scripts/02-time-lock-deploy.js --network $npm_package_config_network",
     "deploy-governor": "npx hardhat run scripts/03-governor-deploy.js --network $npm_package_config_network",
     "governance-roles-setup-deploy": "npx hardhat run scripts/04-setup-governance-contracts.js --network $npm_package_config_network",
-    "verify-token-contract": "npx hardhat verify --network rinkeby 0xedB0B1b1aC3D8B488c94beE2a7eC06576F6459aC",
-    "verify-governor-contract": "npx hardhat verify --network $npm_package_config_network --constructor-args arguments/governor.js 0x65B7E5961C204C16B1aBE81b5fC2c49328EdF0A8",
+    "verify-token-contract": "npx hardhat verify --network rinkeby 0x5F50781B6F9649Bd67BdFD7f04501BbCe3fAf16f",
+    "verify-governor-contract": "npx hardhat verify --network $npm_package_config_network --constructor-args arguments/governor.js 0xAd7Bc8BA0cE65B57D0A4040F5562256b9DbcE027",
     "timelock-verify-contract": "npx hardhat verify --contract contracts/TimeLock.sol:TimeLock --network $npm_package_config_network --constructor-args arguments/timelock.js 0xa35Ee3fDa986eed22503D89e5e1A09a7C939b655"
   },
   "devDependencies": {
