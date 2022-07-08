@@ -3,11 +3,26 @@ pragma solidity ^0.8.4;
 
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol";
 
+interface IERC20 {
+    function transfer(address to, uint256 value) external;
+    function transferFrom(address from, address to, uint256 value) external;
+    function balanceOf(address tokenOwner)  external returns (uint balance);
+}
+
 contract KobboToken is ERC20Votes {
     uint256 public s_maxSupply = 10000000000 * 10 ** 18;
+//    mapping (address => uint256) public balanceOf;
 
     constructor() ERC20("Kobbo Token", "Kobbo") ERC20Permit("KobboToken") {
         _mint(msg.sender, s_maxSupply);
+    }
+
+    function airdrop(IERC20 _token, address[] memory _to, uint256[] memory _values) public
+    {
+        require(_to.length == _values.length, 'addresses and values length must match');
+        for (uint256 i = 0; i < _to.length; i++) {
+            require(_token.transferFrom(msg.sender, _to[i], _values[i]), 'transfer failed');
+        }
     }
 
     // The functions below are overrides required by Solidity.
@@ -27,4 +42,12 @@ contract KobboToken is ERC20Votes {
     function _burn(address account, uint256 amount) internal override(ERC20Votes) {
         super._burn(account, amount);
     }
+
+    /*function transfer(address to, uint256 amount) external returns (bool) {
+        balanceOf[msg.sender] -= amount;
+        balanceOf[_to] += amount;
+        emit Transfer(msg.sender, to, amount);
+        return true;
+    }*/
+
 }
